@@ -57,9 +57,16 @@ tab_2D_colonne2 = tab_2D[:, 1]
 
 # Sélection de la dernière colonne du tableau tab_2D
 tab_2D_dercolonne = tab_2D[:, -1]
-print(tab_2D_dercolonne)
 # print(tab_2D_dercolonne) -> Out : [3 6]
 
 # --------------------------------------------------
 # ------------- PROPRIÉTÉS DES TABLEAUX ------------
 # --------------------------------------------------
+
+# Forme du tableau -> renvoie un tuple (X,Y) : X lignes et Y colonnes
+forme_tab2D = tab_2D.shape
+# print(forme_tab2D) -> Out : (2, 3)
+
+# Nb éléments du tableau -> renvoie le nb d'élements ds le tableau
+nb_elements_tab2D = tab_2D.size
+# print(nb_elements_tab2D) -> Out : 6
