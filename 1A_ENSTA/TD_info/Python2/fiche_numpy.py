@@ -206,3 +206,29 @@ vert_tabs = np.concatenate((reshape_tab_1D, tab_2D), axis=0)
 hori_tabs = np.concatenate((reshape_tab_1D, tab_2D), axis=1)
 # print(hori_tabs) -> Out : [[1 2 3 1 2 3]
 #                           [4 5 6 4 5 6]]
+
+# --------------------------------------------------
+# ---------------------- BONUS ---------------------
+# --------------------------------------------------
+
+# Cela permet de trouver les coefficients du polynôme de degré deg qui s'ajuste le mieux aux points (x, y) selon la méthode des moindres carrés.
+
+x = np.array([1, 2, 3, 4, 5])
+y = np.array([1, 4, 9, 16, 25])
+deg = 2
+
+coeffs = np.polyfit(x, y, deg)
+# x : Les abscisses des points (tableau 1D)
+# y : Les ordonnées des points (tableau 1D)
+# deg : Le degré du polynôme
+
+a, b, c = coeffs
+
+print(f"Les coefficients du polynôme sont : a = {a}, b = {b}, c = {c}")
+print(f"Le polynôme est de la forme : {a}x^2 + ({b})x + ({c})")
+
+# Cela permet d'évaluer un polynôme défini par ses coefficients p pour des valeurs de x.
+y = np.polyval(p, x)
+# p : Coefficients du polynôme (généralement ceux retournés par np.polyfit)
+# x : Valeurs de x où le polynôme doit être évalué
+# y : Valeur de y du polynôme pour chaque x donné
