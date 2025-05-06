@@ -5,9 +5,9 @@
 
 # Question 2 : Relation de récurrence
 
-# 𝑆𝑛 = 𝑆𝑛-₁ + 𝑛^3
+# 𝑆ₙ = 𝑆ₙ₋₁ + 𝑛³
 
-# Question 3 : Écrire une fonction récursive somme_cubes(n) qui prend en argument un nombre entier 𝑛 et qui calcule 𝑆𝑛.
+# Question 3 : Écrire une fonction récursive somme_cubes(n) qui prend en argument un nombre entier 𝑛 et qui calcule 𝑆ₙ.
 
 
 def somme_cubes(n):
