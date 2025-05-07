@@ -11,7 +11,7 @@ def fibo_malin(a, b, n):
 
 
 if __name__ == "__main__":
-    print(fibo_malin(1, 0, 1))
+    print(fibo_malin(1, 0, 998))
 
 
 # Question 2
