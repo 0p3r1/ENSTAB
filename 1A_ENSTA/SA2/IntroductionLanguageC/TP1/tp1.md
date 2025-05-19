@@ -1,0 +1,119 @@
+# TD1
+
+## Types de données et affichage
+
+1. **Rappeler les types de base du langage C.**
+
+| Type     | Signification                | Exemples de valeur                            |
+| -------- | ---------------------------- | --------------------------------------------- |
+| `char`   | Caractère unique             | `'a' 'A' 'z' 'Z' '\n'`<br>Varie de –128 à 127 |
+| `int`    | Nombre entier                | `0 1 -1 4589 32000`<br>`-231 à 231 +1`        |
+| `float`  | Nombre réel simple           | `0.0 1.0 3.14 5.32 -1.23`                     |
+| `double` | Nombre réel double précision | `0.0 1.0E–10 1.0 -1.34567896`                 |
+
+2. **Rechercher dans la documentation de `printf` comment afficher le contenu de variables de ces types.**
+
+| Type     | Spécificateur `printf` | Exemple de code              |
+| -------- | ---------------------- | ---------------------------- |
+| `char`   | `%c`                   | `printf("%c", maLettre);`    |
+| `int`    | `%d` ou `%i`           | `printf("%d", monEntier);`   |
+| `float`  | `%f`                   | `printf("%f", monFlottant);` |
+| `double` | `%lf`                  | `printf("%lf", monDouble);`  |
+
+3. **Comment représente-t-on un booléen ?**
+
+En C, les booléens ne sont pas présents dans le langage d'origine (C89), mais on peut les utiliser via la bibliothèque standard à partir de C99 :
+
+```c
+#include <stdbool.h>
+bool monBooleen = true;  // ou false
+printf("%s", monBooleen ? "true" : "false");
+```
+
+> Sans `<stdbool.h>`, on peut utiliser un `int` avec `0` pour faux et tout autre entier pour vrai.
+
+## Premier programme (normalement déjà fait en fin de cours 1)
+
+```c
+#include <stdio.h>
+
+int main(int argc, char* argv[]){
+        printf("Hello World !\n");
+        return 0;
+}
+```
+
+```sh
+➜  TP1 git:(main) ✗ gcc -o hello hello.c
+➜  TP1 git:(main) ✗ ./hello
+Hello World !
+```
+
+## Programme qui affiche quelque chose
+
+1. **Modifiez le code précédent pour lui faire afficher un texte prédéfini ("Je suis le deuxième programme").**
+
+```c
+#include <stdio.h>
+
+int main(int argc, char* argv[]){
+        printf("Je suis le deuxième programme\n");
+        return 0;
+}
+```
+
+```sh
+➜  TP1 git:(main) ✗ gcc -o exo1 exo1.c
+➜  TP1 git:(main) ✗ ./exo1
+Je suis le deuxième programme
+```
+
+2. **Rejouer la procédure consistant à sauver le programme (sous le nom exo2.c), le compiler, l’exécuter, le tout en vérifiant l’absence d’erreur.**
+
+```sh
+➜  TP1 git:(main) ✗ gcc -o exo2 exo2.c
+➜  TP1 git:(main) ✗ ./exo2
+Je suis le deuxième programme
+```
+
+3. **Modifier le code précédent (exo3) pour définir trois variables a, b, et c correspondant à des entiers. On veut que le programme affiche le texte "<valeur de a> divisé par <valeur de b> vaut <valeur du résultat>" et passe à la ligne, avec résultat qui correspond à la division de a par b stockée dans c. Testez avec a=10 et b=3.**
+
+```c
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+    int a = 10;
+    int b = 3;
+    int c = a / b;
+
+    printf("%d divisé par %d vaut %d\n", a, b, c);
+    return 0;
+}
+```
+
+```sh
+➜  TP1 git:(main) ✗ gcc -o exo3 exo3.c
+➜  TP1 git:(main) ✗ ./exo3
+10 divisé par 3 vaut 3
+```
+
+4. **Changer les types des variables et ajustez le code pour permettre un résultat exact (exo4).**
+
+```c
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+    float a = 10.0;
+    float b = 3.0;
+    float c = a / b;
+
+    printf("%.1f divisé par %.1f vaut %.2f\n", a, b, c);
+    return 0;
+}
+```
+
+```sh
+➜  TP1 git:(main) ✗ gcc -o exo4 exo4.c
+➜  TP1 git:(main) ✗ ./exo4
+10.0 divisé par 3.0 vaut 3.33
+```
