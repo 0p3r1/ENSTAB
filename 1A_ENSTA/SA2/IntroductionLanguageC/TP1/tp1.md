@@ -227,3 +227,44 @@ x = 1, y = 1, z = 1
 ```
 
 6. `z = 2 >= 3 && 2 ; x = 1 == 3 | | 2 ; y = x == z ;`
+
+> À la main : z = 0 ; x = 1 ; y = 0
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int z = 2 >= 3 && 2;
+    int x = 1 == 3 || 2;
+    int y = x == z;
+    printf("x = %d, y = %d, z = %d\n", x, y, z);
+    return 0;
+}
+```
+
+```sh
+➜  TP1 git:(main) gcc -o ari_exo6 ari_exo6.c
+ari_exo6.c:5:20: warning: use of logical '&&' with constant operand [-Wconstant-logical-operand]
+    int z = 2 >= 3 && 2;
+                   ^  ~
+ari_exo6.c:5:20: note: use '&' for a bitwise operation
+    int z = 2 >= 3 && 2;
+                   ^~
+                   &
+ari_exo6.c:5:20: note: remove constant to silence this warning
+    int z = 2 >= 3 && 2;
+                  ~^~~~
+ari_exo6.c:6:20: warning: use of logical '||' with constant operand [-Wconstant-logical-operand]
+    int x = 1 == 3 || 2;
+                   ^  ~
+ari_exo6.c:6:20: note: use '|' for a bitwise operation
+    int x = 1 == 3 || 2;
+                   ^~
+                   |
+2 warnings generated.
+```
+
+```sh
+➜  TP1 git:(main) ✗ ./ari_exo6
+x = 1, y = 0, z = 0
+```
