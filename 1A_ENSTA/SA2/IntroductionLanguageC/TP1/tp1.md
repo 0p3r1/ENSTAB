@@ -117,3 +117,37 @@ int main(int argc, char* argv[]) {
 ➜  TP1 git:(main) ✗ ./exo4
 10.0 divisé par 3.0 vaut 3.33
 ```
+
+## Arithmétique et opérateurs
+
+**Calculez à la main le résultat de chacune des expressions suivantes, puis écrivez un programme qui affiche le résultat pour contrôler vos prédictions.**
+
+1. `4−3\*2−1`
+
+> À la main : 3\*2 = 6 et 4-6-1 = -3
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int res = 4 - 3 * 2 - 1;
+    printf("Résultat : %d\n", res);
+    return 0;
+}
+```
+
+```sh
+➜  TP1 git:(main) gcc -o ari_exo1 ari_exo1.c
+➜  TP1 git:(main) ✗ ./ari_exo1
+Résultat : -3
+```
+
+2. `2+3*6+7*2\*−2/4`
+
+3. `8/4+2\*10%5+3+2/1`
+
+4. `z = 10 −2; y = 4 \* 2 ; x = z < y ++;`
+
+5. `x = 3 > 2 > 1 ; y = x ++ + 1 ; z = x | | ! y ;`
+
+6. `z = 2 >= 3 && 2 ; x = 1 == 3 | | 2 ; y = x == z ;`
