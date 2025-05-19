@@ -184,6 +184,26 @@ Résultat : 7
 
 4. `z = 10 −2; y = 4 * 2 ; x = z < y ++;`
 
+> À la main : z = 8 ; y = 8, mais y++ => donc y = 9 ; x = 0
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int z = 10 - 2;
+    int y = 4 * 2;
+    int x = z < y++;
+    printf("x = %d, y = %d, z = %d\n", x, y, z);
+    return 0;
+}
+```
+
+```sh
+➜  TP1 git:(main) gcc -o ari_exo4 ari_exo4.c
+➜  TP1 git:(main) ✗ ./ari_exo4
+x = 0, y = 9, z = 8
+```
+
 5. `x = 3 > 2 > 1 ; y = x ++ + 1 ; z = x | | ! y ;`
 
 6. `z = 2 >= 3 && 2 ; x = 1 == 3 | | 2 ; y = x == z ;`
