@@ -122,7 +122,7 @@ int main(int argc, char* argv[]) {
 
 **Calculez à la main le résultat de chacune des expressions suivantes, puis écrivez un programme qui affiche le résultat pour contrôler vos prédictions.**
 
-1. `4−3\*2−1`
+1. `4−3*2−1`
 
 > À la main : 3\*2 = 6 et 4-6-1 = -3
 
@@ -142,11 +142,29 @@ int main(void) {
 Résultat : -3
 ```
 
-2. `2+3*6+7*2\*−2/4`
+2. `2+3*6+7*2*−2/4`
 
-3. `8/4+2\*10%5+3+2/1`
+> À la main : 3\*6 = 18 ; 7\*2\*−2 = -28 ; -28/4 = -7 ; 2 + 18 -7 = 13
 
-4. `z = 10 −2; y = 4 \* 2 ; x = z < y ++;`
+```c
+#include <stdio.h>
+
+int main(void) {
+    int res = 2+3*6+7*2*−2/4;
+    printf("Résultat : %d\n", res);
+    return 0;
+}
+```
+
+```sh
+➜  TP1 git:(main) gcc -o ari_exo2 ari_exo2.c
+➜  TP1 git:(main) ✗ ./ari_exo2
+Résultat : 13
+```
+
+3. `8/4+2*10%5+3+2/1`
+
+4. `z = 10 −2; y = 4 * 2 ; x = z < y ++;`
 
 5. `x = 3 > 2 > 1 ; y = x ++ + 1 ; z = x | | ! y ;`
 
