@@ -206,4 +206,24 @@ x = 0, y = 9, z = 8
 
 5. `x = 3 > 2 > 1 ; y = x ++ + 1 ; z = x | | ! y ;`
 
+> À la main : x = 1 ; y = 1 ; z = 1
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int x = 3 > 2 > 1;
+    int y = x++ + 1;
+    int z = x || !y;
+    printf("x = %d, y = %d, z = %d\n", x, y, z);
+    return 0;
+}
+```
+
+```sh
+➜  TP1 git:(main) gcc -o ari_exo5 ari_exo5.c
+➜  TP1 git:(main) ✗ ./ari_exo5
+x = 1, y = 1, z = 1
+```
+
 6. `z = 2 >= 3 && 2 ; x = 1 == 3 | | 2 ; y = x == z ;`
