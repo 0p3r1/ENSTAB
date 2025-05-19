@@ -268,3 +268,31 @@ ari_exo6.c:6:20: note: use '|' for a bitwise operation
 ➜  TP1 git:(main) ✗ ./ari_exo6
 x = 1, y = 0, z = 0
 ```
+
+## Structures conditionnelles
+
+**On a la propriété suivante : trois nombre positifs sont les longueurs des cotés d’un triangle si et seulement si aucun de ces trois nombres n’est supérieur à la somme des deux autres. On suppose que a, b et c sont trois nombres ; écrire un programme qui affichera "<valeur de a>, <valeur de b>, <valeur de c> est bien un triangle" ou "<valeur de a>, <valeur de b>, <valeur de c> ne peut pas être un triangle" suivant les valeurs de a, b, c que vous choisirez avant la compilation.**
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a = 3;
+    int b = 4;
+    int c = 5;
+
+    if (a + b > c && a + c > b && b + c > a) {
+        printf("%d, %d, %d est bien un triangle\n", a, b, c);
+    } else {
+        printf("%d, %d, %d ne peut pas être un triangle\n", a, b, c);
+    }
+
+    return 0;
+}
+```
+
+```sh
+➜  TP1 git:(main) gcc -o struct_condi struct_condi.c
+➜  TP1 git:(main) ✗ ./struct_condi
+3, 4, 5 est bien un triangle
+```
