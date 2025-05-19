@@ -164,6 +164,24 @@ Résultat : 13
 
 3. `8/4+2*10%5+3+2/1`
 
+> À la main : 8/4 = 2 ; 2\*10%5 = 0 ; 2 + 0 + 5 = 7
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int res = 8/4+2*10%5+3+2/1;
+    printf("Résultat : %d\n", res);
+    return 0;
+}
+```
+
+```sh
+➜  TP1 git:(main) gcc -o ari_exo3 ari_exo3.c
+➜  TP1 git:(main) ✗ ./ari_exo3
+Résultat : 7
+```
+
 4. `z = 10 −2; y = 4 * 2 ; x = z < y ++;`
 
 5. `x = 3 > 2 > 1 ; y = x ++ + 1 ; z = x | | ! y ;`
