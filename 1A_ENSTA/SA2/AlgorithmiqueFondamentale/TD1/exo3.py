@@ -1,16 +1,5 @@
 import numpy as np
-import exo1
-
-
-def insertion_sort_gap(tab, gap):
-    for i in range(gap, len(tab)):
-        temp = tab[i]
-        j = i
-        while j >= gap and tab[j - gap] > temp:
-            tab[j] = tab[j - gap]
-            j -= gap
-        tab[j] = temp
-    return tab
+import exo2
 
 
 def shell_sort(tab):
@@ -24,7 +13,7 @@ def shell_sort(tab):
     gaps.reverse()
 
     for g in gaps:
-        insertion_sort_gap(tab, g)
+        exo2.tri_insertion(tab, g)
 
     return tab
 
