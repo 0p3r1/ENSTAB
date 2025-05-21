@@ -1,6 +1,5 @@
 import numpy as np
 import exo1
-import exo2
 
 
 def fusion(tab1, tab2, d1, d2, taille):
