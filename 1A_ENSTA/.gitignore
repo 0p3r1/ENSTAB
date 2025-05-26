@@ -1,0 +1,47 @@
+# --- Ignorer fichiers compilés C ---
+*.o
+*.out
+*.exe
+*.a
+*.so
+*.dylib
+*.dSYM/
+*.stackdump
+
+# --- Ignorer binaires générés ---
+/a.out
+*.elf
+*.bin
+
+# --- Ignorer fichiers Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- Ignorer fichiers de logs ---
+*.log
+
+# --- Ignorer fichiers temporaires ---
+*.swp
+*.swo
+*~
+.DS_Store
+
+# --- Ignorer environnement virtuel Python ---
+venv/
+env/
+.venv/
+.env/
+
+# --- Ignorer fichiers spécifiques à l'éditeur ---
+.vscode/
+.idea/
+*.code-workspace
+
+# --- Ignorer fichiers LaTeX si besoin ---
+*.aux
+*.toc
+*.log
+*.out
+*.pdf
