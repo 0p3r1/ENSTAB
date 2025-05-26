@@ -8,10 +8,12 @@ int main(void)
 
     for (int i = 0; i < 8; i++)
     {
-        if (tableau[i] >= 0)
+        if (tableau[i] < 0)
         {
-            somme = somme + tableau[i];
+            break;
         }
+
+        somme = somme + tableau[i];
     }
 
     printf("La somme des elements positifs du tableau est : %d\n", somme);
