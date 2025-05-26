@@ -22,3 +22,13 @@ plt.title("Solution exacte de l'équation $y'(t) = -ay(t)$")
 plt.legend()
 plt.grid()
 plt.show()
+
+# *******************************************************
+# ** 2. Ecrire la fonction de dynamique de l’équation
+# ** différentielle, sur papier et sur Python.
+# ** On l’appellera f(t, y), mˆeme si t n’intervient pas.
+# *******************************************************
+
+def f(t,y = 1):
+    a = 2
+    return -a * y
