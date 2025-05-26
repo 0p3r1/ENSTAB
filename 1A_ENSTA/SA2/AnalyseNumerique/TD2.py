@@ -32,3 +32,25 @@ plt.show()
 def f(t,y = 1):
     a = 2
     return -a * y
+
+# *******************************************************
+# ** 3. Ecrire une fonction euler(t0, tmax, h, y0, f)
+# ** qui renvoit un vecteur toutes les valeurs prises par
+# ** yk dans la suite générée par un schéma d’Euler.
+# *******************************************************
+
+def euler(t0, tmax, h, y0, f):
+    T = np.arange(t0, tmax + h, h)
+    Y = []
+    y = y0
+    for t in T:
+        Y.append(y)
+        y = y + h * f(t, y)
+    return np.array(Y)
+ 
+t0 = 0
+tmax = 5
+h = 0.1
+y0 = 1
+ 
+print(euler(t0, tmax, h, y0, f))
