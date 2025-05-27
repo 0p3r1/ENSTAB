@@ -4,7 +4,7 @@
 
 #define ARRAY_SIZE 42
 
-void triParComptage(int tab[]) {
+void TriComptage(int tab[]) {
    int borneSuperieure = 0;
 
    for (int i = 0; i < ARRAY_SIZE; i++) {
@@ -44,7 +44,7 @@ int main () {
    }
    printf("\n");
 
-   triParComptage(rand_array);
+   TriComptage(rand_array);
 
    for (int i = 0; i < ARRAY_SIZE; i++) {
       printf("%d ", rand_array[i]);
