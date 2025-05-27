@@ -51,6 +51,19 @@ def tri_fusion(tab):
 
     return tab
 
+def tri_fusion_prof(tab):
+    tampon = np.zeros_like(tab)
+    taille = 1
+
+    while taille < len(tab):
+        d1 = 0
+        while d1 < len(tab):
+            fusion(tab, tampon, d1, min(d1 + taille, len(tab)), taille)
+            d1 += 2 * taille
+        tab, tampon = tampon, tab
+        taille *= 2
+
+    return tab
 
 if __name__ == "__main__":
     # t1 = np.array((4, 2, 3, 1))
@@ -71,3 +84,7 @@ if __name__ == "__main__":
     tab_tri = tri_fusion(t1)
     print(tab_tri[100])  # 528
     print(tab_tri[808080])  # 4040168
+
+    tab_tri_prof = tri_fusion_prof(t1)
+    print(tab_tri_prof[100])  # 528
+    print(tab_tri_prof[808080])  # 4040168
