@@ -89,7 +89,7 @@ def question5():
 # *******************************************************
 # ** 6. Au besoin, transformez la fonction euler()
 # ** mono-dimensionnelle pour qu’elle puisse accepter
-# * cette fonction d’´evolution. La fonction doit renvoyer
+# ** cette fonction d’´evolution. La fonction doit renvoyer
 # ** un tableau avec autant de lignes que la dimension du
 # ** vecteur d’´etat, et autant de colonnes que de pas de
 # ** temps. Affichez les courbes des populations de proies
