@@ -15,13 +15,13 @@ t = np.linspace(0, 5, 100)
 
 y_exact = np.exp(-a * t)
 
-plt.plot(t, y_exact, label="Solution exacte")
-plt.xlabel("Temps t")
-plt.ylabel("y(t)")
-plt.title("Solution exacte de l'équation $y'(t) = -ay(t)$")
-plt.legend()
-plt.grid()
-plt.show()
+# plt.plot(t, y_exact, label="Solution exacte")
+# plt.xlabel("Temps t")
+# plt.ylabel("y(t)")
+# plt.title("Solution exacte de l'équation $y'(t) = -ay(t)$")
+# plt.legend()
+# plt.grid()
+# plt.show()
 
 # *******************************************************
 # ** 2. Ecrire la fonction de dynamique de l’équation
@@ -139,5 +139,72 @@ def question6():
     plt.tight_layout()
     plt.show()
 
+# *******************************************************
+# ** 9. Ecrire un schéma de Runge-Kutta pour remplacer le
+# ** schéma d’Euler de la question 3. Reprendre la q4.
+# *******************************************************
+
+def rk2(t0, tmax, h, y0, f):
+    T = [t0]
+    Y = [y0.copy()]
+    t = t0
+    y = y0.copy()
+
+    while t < tmax:
+        k1 = f(t, y)
+        k2 = f(t + h, y + h * k1)
+        y = y + h * (0.5 * k1 + 0.5 * k2)
+        t = t + h
+        T.append(t)
+        Y.append(y.copy())
+
+    return np.array(T), np.array(Y)
+
+def question9():
+    t0 = 0
+    tmax = 20
+    h = 0.01
+    vect = np.array([2, 1/4])
+
+    T, Y = euler_evol(t0, tmax, h, vect, lotka_volterra)
+    T_RK2, Y_RK2 = rk2(t0, tmax, h, vect, lotka_volterra)
+
+    axe_x = Y[:,0]
+    axe_y = Y[:,1]
+
+    axe_x_rk2 = Y_RK2[:,0]
+    axe_y_rk2 = Y_RK2[:,1]
+
+    fig, axes = plt.subplots(2, 2, figsize=(16, 8))
+
+    axes[0, 0].plot(axe_x, axe_y, label="")
+    axes[0, 0].set_title("EULER : LA PATATE")
+    axes[0, 0].set_xlabel("x(t) : proies")
+    axes[0, 0].set_ylabel("y(t) : prédateurs")
+    axes[0, 0].legend()
+
+    axes[0, 1].plot(T, axe_x, label="")
+    axes[0, 1].plot(T, axe_y, label="")
+    axes[0, 1].set_title("EULER")
+    axes[0, 1].set_xlabel("Temps t")
+    axes[0, 1].set_ylabel("Population")
+    axes[0, 1].legend()
+
+    axes[1, 0].plot(axe_x_rk2, axe_y_rk2, label="")
+    axes[1, 0].set_title("RK2 : LA PATATE")
+    axes[1, 0].set_xlabel("x(t) : proies")
+    axes[1, 0].set_ylabel("y(t) : prédateurs")
+    axes[1, 0].legend()
+
+    axes[1, 1].plot(T_RK2, axe_x_rk2, label="")
+    axes[1, 1].plot(T_RK2, axe_y_rk2, label="")
+    axes[1, 1].set_title("RK2")
+    axes[1, 1].set_xlabel("Temps t")
+    axes[1, 1].set_ylabel("Population")
+    axes[1, 1].legend()
+
+    plt.tight_layout()
+    plt.show()
+
 if __name__ == "__main__":
-    question6()
+    question9()
