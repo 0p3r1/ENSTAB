@@ -53,4 +53,91 @@ tmax = 5
 h = 0.1
 y0 = 1
  
-print(euler(t0, tmax, h, y0, f))
+# print(euler(t0, tmax, h, y0, f))
+
+# *******************************************************
+# ** 4. Comparer les valeurs générées par euler et les
+# ** valeurs exactes pour différentes valeurs de h. En
+# ** déduire la précision de la méthode. On considère a=1
+# ** Interpréter ce qui se passe pr h ∈]1, 2] et pr h > 2
+# *******************************************************
+
+
+# *******************************************************
+# ** 5. En Python, créez une fonction d’évolution qui
+# ** donne le vecteur (x'(t), y'(t)) en fonction du point
+# ** (x(t), y(t)). Sur le modèle de la fonction de la
+# ** question 2, elle pourra prendre en entrée pour y
+# ** et pour sortie un numpy array monodimensionnel.
+# *******************************************************
+
+# (x'(t), y'(t))
+# = (x(t)(a-by(t)), -y(t)(c-dx(t)))
+
+def lotka_volterra(t, vect):
+    x, y = vect
+    xdot = x * (4 - 3 * y)
+    ydot = -y * (3 - 2 * x)
+    return np.array([xdot, ydot])
+
+def question5():
+    t = 0
+    vect = np.array([2, 1/4])
+
+    print(lotka_volterra(t, vect))
+
+# *******************************************************
+# ** 6. Au besoin, transformez la fonction euler()
+# ** mono-dimensionnelle pour qu’elle puisse accepter
+# * cette fonction d’´evolution. La fonction doit renvoyer
+# ** un tableau avec autant de lignes que la dimension du
+# ** vecteur d’´etat, et autant de colonnes que de pas de
+# ** temps. Affichez les courbes des populations de proies
+# ** et de prédateurs.
+# *******************************************************
+
+def euler_evol(t0, tmax, h, y0, f):
+    T = [t0]
+    Y = [y0]
+    t = t0
+    y = y0.copy()
+
+    while t < tmax:
+        y = y + h * f(t, y)
+        t += h
+        T.append(t)
+        Y.append(y.copy())
+
+    return np.array(T), np.array(Y)
+
+def question6():
+    t0 = 0
+    tmax = 20
+    h = 0.01
+    vect = np.array([2, 1/4])
+
+    T, Y = euler_evol(t0, tmax, h, vect, lotka_volterra)
+
+    axe_x = Y[:,0]
+    axe_y = Y[:,1]
+
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+
+    axes[0].plot(axe_x, axe_y, label="")
+    axes[0].set_title("LA PATATE")
+    axes[0].set_xlabel("x(t) : proies")
+    axes[0].set_ylabel("y(t) : prédateurs")
+    axes[0].legend()
+
+    axes[1].plot(T, axe_x, label="")
+    axes[1].plot(T, axe_y, label="")
+    axes[1].set_title("")
+    axes[1].set_xlabel("Temps t")
+    axes[1].set_ylabel("Population")
+    axes[1].legend()
+
+    plt.tight_layout()
+    plt.show()
+
+if __name__ == "__main__":
+    question6()
