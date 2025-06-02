@@ -206,5 +206,93 @@ def question9():
     plt.tight_layout()
     plt.show()
 
+# *******************************************************
+# ** 14. Ecrire un schéa de Runge-Kutta d’ordre 3 et
+# ** comparer le résultat obtenu avec les schémas
+# ** précédents.
+# *******************************************************
+
+def rk3(t0, tmax, h, y0, f):
+    T = [t0]
+    Y = [y0.copy()]
+    t = t0
+    y = y0.copy()
+
+    while t < tmax:
+        k1 = f(t, y)
+        k2 = f(t + h/3, y + (h/3) * k1)
+        k3 = f(t + 2*h/3, y + (2*h/3) * k2)
+
+        y = y + (h/4) * (k1 + 3*k3)
+        t = t + h
+        T.append(t)
+        Y.append(y.copy())
+
+    return np.array(T), np.array(Y)
+
+def question14():
+    t0 = 0
+    tmax = 20
+    h = 0.01
+    vect = np.array([2, 1/4])
+
+    T, Y = euler_evol(t0, tmax, h, vect, lotka_volterra)
+    T_RK2, Y_RK2 = rk2(t0, tmax, h, vect, lotka_volterra)
+    T_RK3, Y_RK3 = rk3(t0, tmax, h, vect, lotka_volterra)
+
+    axe_x = Y[:,0]
+    axe_y = Y[:,1]
+
+    axe_x_rk2 = Y_RK2[:,0]
+    axe_y_rk2 = Y_RK2[:,1]
+
+    axe_x_rk3 = Y_RK3[:,0]
+    axe_y_rk3 = Y_RK3[:,1]
+
+    fig, axes = plt.subplots(3, 2, figsize=(16, 8))
+
+    axes[0, 0].plot(axe_x, axe_y, label="")
+    axes[0, 0].set_title("EULER : LA PATATE")
+    axes[0, 0].set_xlabel("x(t) : proies")
+    axes[0, 0].set_ylabel("y(t) : prédateurs")
+    axes[0, 0].legend()
+
+    axes[0, 1].plot(T, axe_x, label="")
+    axes[0, 1].plot(T, axe_y, label="")
+    axes[0, 1].set_title("EULER")
+    axes[0, 1].set_xlabel("Temps t")
+    axes[0, 1].set_ylabel("Population")
+    axes[0, 1].legend()
+
+    axes[1, 0].plot(axe_x_rk2, axe_y_rk2, label="")
+    axes[1, 0].set_title("RK2 : LA PATATE")
+    axes[1, 0].set_xlabel("x(t) : proies")
+    axes[1, 0].set_ylabel("y(t) : prédateurs")
+    axes[1, 0].legend()
+
+    axes[1, 1].plot(T_RK2, axe_x_rk2, label="")
+    axes[1, 1].plot(T_RK2, axe_y_rk2, label="")
+    axes[1, 1].set_title("RK2")
+    axes[1, 1].set_xlabel("Temps t")
+    axes[1, 1].set_ylabel("Population")
+    axes[1, 1].legend()
+
+    axes[2, 0].plot(axe_x_rk3, axe_y_rk3, label="")
+    axes[2, 0].set_title("RK3 : LA PATATE")
+    axes[2, 0].set_xlabel("x(t) : proies")
+    axes[2, 0].set_ylabel("y(t) : prédateurs")
+    axes[2, 0].legend()
+
+    axes[2, 1].plot(T_RK3, axe_x_rk3, label="")
+    axes[2, 1].plot(T_RK3, axe_y_rk3, label="")
+    axes[2, 1].set_title("RK3")
+    axes[2, 1].set_xlabel("Temps t")
+    axes[2, 1].set_ylabel("Population")
+    axes[2, 1].legend()
+
+
+    plt.tight_layout()
+    plt.show()
+
 if __name__ == "__main__":
-    question9()
+    question14()
