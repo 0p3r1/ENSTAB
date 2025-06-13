@@ -1,5 +1,9 @@
 # CheatSheet Réseau
 
+## Sites utiles
+
+- [IP Subnet Calculator](https://www.calculator.net/ip-subnet-calculator.html)
+
 ## Classes
 
 | Classe | Début     | Fin             | Masque réseau |
