@@ -4,6 +4,12 @@
 #define NB_INT 4
 #define NB_DOUBLE 2
 
+typedef struct _sensor_data_t {
+    char text[NB_CHAR];
+    uint16_t int_values[NB_INT];
+    double double_values[NB_DOUBLE];
+} sensor_data_t;
+
 int main(void){
 /* On a reçu les données suivantes via un système d'acquisition quelconque.
  * On sait que ces données sont codées comme suit:
@@ -34,7 +40,7 @@ int main(void){
     les_entiers = (uint16_t*)(data + NB_CHAR);
     printf("Entiers: ");
     for (int i = 0; i < NB_INT; i++) {
-        printf("%d ", les_entiers[i]);
+        printf("%hu ", les_entiers[i]);
     }
     printf("\n");
 
@@ -42,6 +48,23 @@ int main(void){
     printf("Doubles: ");
     for (int i = 0; i < NB_DOUBLE; i++) {
         printf("%lf ", les_doubles[i]);
+    }
+    printf("\n");
+
+    printf("------------------------------\n");
+
+    sensor_data_t* sdata_ptr;
+    sdata_ptr = (sensor_data_t*) data;
+
+    printf("Entiers: ");
+    for (int i = 0; i < NB_INT; i++) {
+        printf("%hu ", sdata_ptr->int_values[i]);
+    }
+    printf("\n");
+
+    printf("Doubles: ");
+    for (int i = 0; i < NB_DOUBLE; i++) {
+        printf("%lf ", sdata_ptr->double_values[i]);
     }
     printf("\n");
 
